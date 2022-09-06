@@ -1,6 +1,14 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// No Node.js APIs are available in this process because
-// `nodeIntegration` is turned off. Use `preload.js` to
-// selectively enable features needed in the rendering
-// process.
+const {calc} = require("./build/Release/addon.node");
+
+function celciusToFahrenheit(){
+    let celcius = +document.getElementById('celcius').value;
+    let fahrenheit = (celcius* 9/5) + 32;
+    document.getElementById('fahrenheit').value = fahrenheit;
+
+}
+
+function fahrenheitToCelcius(){
+    let fahrenheit = +document.getElementById('fahrenheit').value;
+    let celcius = calc(fahrenheit);
+    document.getElementById('celcius').value = celcius;
+}
