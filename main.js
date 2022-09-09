@@ -1,7 +1,9 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const url = require('url')
+const addon = require('bindings')('addon.node');
+
 
 function createWindow () {
   // Create the browser window.
@@ -11,7 +13,9 @@ function createWindow () {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
-      nodeIntegrationInWorker: true
+      nodeIntegrationInWorker: true,
+      contextIsolation: false,
+      enableRemoteModule: true
     }
   })
 
@@ -44,3 +48,8 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+// Main слушает все входящие сообщения
+ipcMain.handle('TempConvert', (event, message) => {
+	return addon.CelToFarh(message);
+})

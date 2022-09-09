@@ -2,21 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Temperature Converter</title>
+    <title>Конвертор температур</title>
     <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 
   </head>
   <body>
-    <h1>Temperature Converter</h1>
+    <h1>Конвертор температур</h1>
     <div class="form-group col-md-3">
-      <label for="usr">Celcius:</label>
+      <label for="usr">Цельсий:</label>
     </div>
-    <input type="text" class="form-control" id="celcius" onkeyup="celciusToFahrenheit()" type= "number">
+    <input  class="form-control" id="celcius" onkeyup="celciusToFahrenheit()" onchange="celciusToFahrenheit()"type="number">
     <div class="form-group col-md-3">
-      <label for="pwd">Fahrenheit:</label>
+      <label for="pwd">Фаренгейт:</label>
     </div>
-      <input type="text" class="form-control" id="fahrenheit" onkeyup="fahrenheitToCelcius()" type= "number">
-    <script src='./renderer.js'></script>
+      <input class="form-control" id="fahrenheit" onkeyup="fahrenheitToCelcius()" onchange="fahrenheitToCelcius()" type="number">
+      <script src='./renderer.js'></script>
   </body>
   </body>
 </html>
